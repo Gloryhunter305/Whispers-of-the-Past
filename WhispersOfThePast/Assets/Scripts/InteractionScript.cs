@@ -24,10 +24,11 @@ public class InteractionScript : MonoBehaviour
             // Check each hit to see if it's an interactable item
             foreach (Collider2D hit in hits)
             {
-                if (hit.gameObject.CompareTag(interactableTag))
+                if (hit.gameObject.tag == interactableTag)
                 {
                     // Interact with the item
                     InteractWithItem(hit.gameObject);
+                    hit.gameObject.SetActive(false);
                 }
             }
         }
