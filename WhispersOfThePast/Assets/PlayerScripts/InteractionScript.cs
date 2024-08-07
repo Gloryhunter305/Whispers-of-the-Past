@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class InteractionScript : MonoBehaviour
 {
+    /*  Managers    */
+    public PlayerInventory playerInventory;
     public KeyCode interactButton = KeyCode.E;
     
     // The tag for the items that can be interacted with
     public string interactableTag = "Interactable";
-
-    // The range within which the player can interact with items
     public float interactionRange = 1f;
 
     // Update is called once per frame
     void Update()
     {
-        // Check if the player presses the interact button
         if (Input.GetKeyDown(interactButton))
         {
             // Check if there are any interactable items within range
@@ -28,6 +27,9 @@ public class InteractionScript : MonoBehaviour
                 {
                     // Interact with the item
                     InteractWithItem(hit.gameObject);
+                    playerInventory.AddItem("Coin", 1);
+
+                    //Where the dialogue for the game should be
                     hit.gameObject.SetActive(false);
                 }
             }
