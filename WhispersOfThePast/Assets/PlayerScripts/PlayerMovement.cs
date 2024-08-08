@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
         float horizontalInput = Input.GetAxis("Horizontal");
