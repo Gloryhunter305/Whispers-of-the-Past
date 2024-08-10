@@ -10,7 +10,11 @@ public class Plant : MonoBehaviour
 
     private bool waterStatus = false;           //False = Not watered enough ***    True = Watered enough
 
-    private Renderer plantSaturation;
+    //private Renderer plantSaturation;
+
+    public Sprite wateredPlant;
+    private SpriteRenderer spriteRenderer;
+    private PlayerInventory playerInventory;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +22,8 @@ public class Plant : MonoBehaviour
         wateringRequirement = Random.Range(minimumWatering, maximumWatering + 1);
         Debug.Log("Watering requirement: " + wateringRequirement);
 
-        plantSaturation = GetComponent<Renderer>();
+        //plantSaturation = GetComponent<Renderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void WaterPlant()
     {
@@ -30,8 +35,23 @@ public class Plant : MonoBehaviour
             waterStatus = true;
 
             //Changing the plant's appearance
-            plantSaturation.material.color = Color.green;
+            changeSpritePlant();
         }
+    }
+
+    public void changeSpritePlant()
+    {
+        spriteRenderer.sprite = wateredPlant;
+    }
+
+    public void collectPlant()
+    {
+        playerInventory.AddFlower(this);
+    }
+
+    public void disAppearPlant()
+    {
+        gameObject.SetActive(false);
     }
 
     public bool checkPlantStatus()

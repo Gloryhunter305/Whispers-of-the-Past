@@ -68,6 +68,8 @@ public class InteractionScript : MonoBehaviour
                             {
                                 Debug.Log("Plant is ready to be gathered.");
                                 //ACQUIRE said water plant using PLAYER INVENTORY
+                                playerInventory.AddFlower(currentPlant);
+                                currentPlant.disAppearPlant();
                             }
                             else
                             {
@@ -80,26 +82,6 @@ public class InteractionScript : MonoBehaviour
                     }
 
                 }
-                // if (hit.collider.tag == "WaterBucket")
-                // {
-
-                // }
-                // else if (hit.collider.tag == "Plant")
-                // {
-                //     if (waterAmount > 0 && checkingWaterStatus == false)    //Interacting UNWATERED plant && HAS water in watering can
-                //     {
-                //         plantInteraction.WaterPlant();
-                //         waterAmount--;
-                //     }
-                //     else if (playerInteracts && plantInteraction.checkPlantStatus() == true)   //Interacting WATERED plant
-                //     {
-                //         //ACQUIRE said water plant using PLAYER INVENTORY
-                //     }
-                //     else
-                //     {
-                //         //  WOULD WANT A DIALOGUE POP-UP THAT SAYS THERE'S NOT ENOUGH WATER IN THIS WATERING CAN
-                //     }
-                // }
             }
             
         }
